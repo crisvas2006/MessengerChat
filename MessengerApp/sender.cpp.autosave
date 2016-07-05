@@ -15,13 +15,13 @@ Sender::Sender(QWidget *parent)
     buttonBox->addButton(startButton, QDialogButtonBox::ActionRole);
     buttonBox->addButton(quitButton, QDialogButtonBox::RejectRole);
 
-    timer = new QTimer(this);
+   // timer = new QTimer(this);
     udpSocket = new QUdpSocket(this);
     messageNo = 1;
 
     connect(startButton, SIGNAL(clicked()), this, SLOT(startBroadcasting()));
     connect(quitButton, SIGNAL(clicked()), this, SLOT(close()));
-    connect(startButton, SIGNAL(clicked()), this, SLOT(broadcastDatagram()));
+    //connect(timer, SIGNAL(timeout()), this, SLOT(broadcastDatagram()));
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addWidget(statusLabel);

@@ -3,9 +3,12 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
 ApplicationWindow {
+    id:mess
     visible: true
-    width: 450
-    height: 400
+    width: 650
+    height: 500
+    x:400;
+    y:300;
     title: qsTr("Messenger Chat")
 
     Button {
@@ -13,4 +16,13 @@ ApplicationWindow {
         anchors.bottom: parent.bottom; anchors.bottomMargin: 10
         text: "Send"
     }
+
+    MessageView{
+
+    }
+    UsersView{
+
+    }
+
+
 }
