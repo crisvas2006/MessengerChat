@@ -1,6 +1,7 @@
 #include "sender.h"
 #include <QtWidgets>
 #include <QtNetwork>
+#include <QByteArray>
 
 Sender::Sender(QWidget *parent)
     : QWidget(parent)
@@ -21,7 +22,7 @@ Sender::Sender(QWidget *parent)
 
     connect(startButton, SIGNAL(clicked()), this, SLOT(startBroadcasting()));
     connect(quitButton, SIGNAL(clicked()), this, SLOT(close()));
-    connect(startButton, SIGNAL(clicked()), this, SLOT(broadcastDatagram()));
+    connect(timer, SIGNAL(timeout()), this, SLOT(broadcastDatagram()));
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addWidget(statusLabel);
@@ -44,4 +45,18 @@ void Sender::broadcastDatagram()
     udpSocket->writeDatagram(datagram.data(), datagram.size(),
                              QHostAddress::Broadcast, 45454);
     ++messageNo;
+}
+
+void Sender::sendMessage(QByteArray message)
+{
+    broadcastMyDatagram(message);
+}
+
+void Sender::broadcastMyDatagram(QByteArray datagram)
+{
+    //statusLabel->setText(tr("Now broadcasting: %1").arg(datagram));
+    //QByteArray datagram1 = "Broadcast message " + QByteArray::number(messageNo);
+    udpSocket->writeDatagram(datagram.data(), datagram.size(),
+                             QHostAddress::Broadcast, 45454);
+    //++messageNo;
 }

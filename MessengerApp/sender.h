@@ -1,6 +1,7 @@
 #ifndef SENDER_H
 #define SENDER_H
 #include <QWidget>
+#include <QByteArray>
 
 class QDialogButtonBox;
 class QLabel;
@@ -14,10 +15,12 @@ class Sender : public QWidget
 
 public:
     Sender(QWidget *parent = 0);
+    void sendMessage(QByteArray message);
 
 private slots:
     void startBroadcasting();
     void broadcastDatagram();
+    void broadcastMyDatagram(QByteArray datagram);
 
 private:
     QLabel *statusLabel;

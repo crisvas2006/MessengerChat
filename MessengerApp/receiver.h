@@ -1,26 +1,33 @@
 #ifndef RECEIVER_H
 #define RECEIVER_H
 #include <QWidget>
-
+#include <QStringList>
+#include <QObject>
 class QLabel;
 class QPushButton;
 class QUdpSocket;
 class QAction;
 
-class Receiver : public QWidget
+class Receiver : public QObject
 {
     Q_OBJECT
 
 public:
-    Receiver(QWidget *parent = 0);
+    //Receiver();
+    Q_INVOKABLE QStringList messages;
+    static Receiver* Instance();
+
+protected:
+    Receiver();
 
 private slots:
     void processPendingDatagrams();
+    void processMyPendingDatagrams();
 
 private:
-    QLabel *statusLabel;
-    QPushButton *quitButton;
     QUdpSocket *udpSocket;
+    static Receiver* _instance;
+
 };
 
 #endif // RECEIVER_H

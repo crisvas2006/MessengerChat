@@ -12,7 +12,8 @@ Item {
     Component {
         id: messageDelegate
         Rectangle{
-            width: itemContainer.width * 0.7 -itemContainer.border.width*2; height: content.height * 1.5 + sender.height + border.width * 2
+            width: itemContainer.width * 0.7 -itemContainer.border.width*2;
+            height: content.height * 1.5 + sender.height + border.width * 2
 /**/        x: model.aux === "true" ? itemContainer.width * 0.28 : itemContainer.width * 0.02;
 
             radius:height/10;
@@ -22,14 +23,14 @@ Item {
             Text{
                 id:sender
                 x:parent.width/15 + parent.border.width; y:parent.height/10;
-                text: model.sender + ":";
+                text: "someone" // model.sender + ":";
                 font.pixelSize: itemContainer.width<itemContainer.height ? itemContainer.width *0.035 : itemContainer.height * 0.035;
             }
             Text{
                 id:content
                 //anchors.fill: parent;
                 x:parent.border.width * 2; y:sender.height*1.2 + sender.y;
-                text: model.content;
+                text: model.modelData;
                 font.pixelSize: item.width<item.height ? item.width *0.04 : item.height * 0.04;
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 width: parent.width - parent.border.width * 3
@@ -67,6 +68,7 @@ Item {
     }
 
     function getMockModel(){
+        //messagesModel.append("message 1111");
         myModel.append({"sender":"Andrei","content":"Salut","aux":"false"});//,
         myModel.append({"sender":"Cristi","content":"Nu","aux":"true"});
         myModel.append({"sender":"Gigi","content":"Esti foarte sociabil azi","aux":"false"});
@@ -76,6 +78,7 @@ Item {
         myModel.append({"sender":"Cristi","content":"Nu","aux":"true"});
         myModel.append({"sender":"Cristi","content":"Nu","aux":"true"});
         myModel.append({"sender":"Cristi","content":"Nu","aux":"true"});
-        return myModel;
+        //return myModel;
+        return messagesModel;
     }
 }
