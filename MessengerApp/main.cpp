@@ -28,9 +28,10 @@ int main(int argc, char *argv[])
     Receiver::Instance()->messages.append("Salut");
 
     root-> setContextProperty("messagesModel",QVariant(Receiver::Instance()->messages));
+    root-> setContextProperty("messagesModel2",Receiver::Instance());
 
-    sender.sendMessage("theMessage1");
-    sender.sendMessage("theMessage2");
+    sender.sendMessage("<h5><b>Andrei:</b></h5> theMessage12");
+    sender.sendMessage("<h5><b>Gigi:</b></h5> ma abtin");
     sender.sendMessage("theMessage3");
     sender.sendMessage("theMessage4");
     sender.sendMessage("theMessage5");

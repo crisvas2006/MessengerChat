@@ -56,6 +56,10 @@ Receiver::Receiver (){
 
 }
 
+//void Receiver::addText(QString message){
+//    myQStr.append(genString());
+//    emit stringChanged();
+//}
 
 void Receiver::processMyPendingDatagrams()
 {
@@ -63,7 +67,8 @@ void Receiver::processMyPendingDatagrams()
         QByteArray datagram;
         datagram.resize(udpSocket->pendingDatagramSize());
         udpSocket->readDatagram(datagram.data(), datagram.size());
-        messages.append(datagram.data());
+        myQStr.append(datagram.data());
+        emit stringChanged();
     }
 }
 

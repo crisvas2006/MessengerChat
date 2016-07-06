@@ -13,23 +13,23 @@ Item {
         id: messageDelegate
         Rectangle{
             width: itemContainer.width * 0.7 -itemContainer.border.width*2;
-            height: content.height * 1.5 + sender.height + border.width * 2
+            height: content.height  + border.width * 2 + content.font.pixelSize * 0.2
 /**/        x: model.aux === "true" ? itemContainer.width * 0.28 : itemContainer.width * 0.02;
-
+            y:500
             radius:height/10;
             color:"#cfcfff";
             border.width: 3//itemContainer/20;
             border.color: "#505070"
-            Text{
-                id:sender
-                x:parent.width/15 + parent.border.width; y:parent.height/10;
-                text: "someone" // model.sender + ":";
-                font.pixelSize: itemContainer.width<itemContainer.height ? itemContainer.width *0.035 : itemContainer.height * 0.035;
-            }
+//            Text{
+//                id:sender
+//                x:parent.width/15 + parent.border.width; y:parent.height/10;
+//                text: "someone" // model.sender + ":";
+//                font.pixelSize: itemContainer.width<itemContainer.height ? itemContainer.width *0.035 : itemContainer.height * 0.035;
+//            }
             Text{
                 id:content
                 //anchors.fill: parent;
-                x:parent.border.width * 2; y:sender.height*1.2 + sender.y;
+                x:parent.border.width * 2; y:font.pixelSize * 0.2;
                 text: model.modelData;
                 font.pixelSize: item.width<item.height ? item.width *0.04 : item.height * 0.04;
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -79,6 +79,6 @@ Item {
         myModel.append({"sender":"Cristi","content":"Nu","aux":"true"});
         myModel.append({"sender":"Cristi","content":"Nu","aux":"true"});
         //return myModel;
-        return messagesModel;
+        return messagesModel2.string;
     }
 }
