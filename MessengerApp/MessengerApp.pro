@@ -17,7 +17,8 @@ HEADERS       += sender.h
 HEADERS       += receiver.h
 
 SOURCES       = sender.cpp \
-                main.cpp \ receiver.cpp
+                main.cpp \
+                receiver.cpp
 
 # Default rules for deployment.
 include(deployment.pri)
