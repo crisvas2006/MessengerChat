@@ -10,6 +10,8 @@
 #include <QTimer>
 #include <QObject>
 
+	// salut baieti
+
 void refresh();
 void myWait();
 int main(int argc, char *argv[])
